@@ -1,0 +1,19 @@
+Here is the link of Rgb composite:https://code.earthengine.google.com/c61367f87a935318626a3714db143efa
+here is the code:
+print(table.first())
+var Upz = table.filter(ee.Filter.eq("NAME_3","Matlab"));
+print(Upz);
+Map.centerObject(table,10);
+Map.addLayer(Upz,{},"Matlab");
+var s2= ee.ImageCollection("COPERNICUS/S2_SR")
+        .filterBounds(Upz)
+        .filterDate("2023-03-01", "2023-03-15")
+        .select(["B4","B3","B2","B8"])
+        .mean()
+print(s2);
+var vizpsm = {
+  min:158,
+  max: 2020,
+  bands:["B4","B3","B2"]
+}
+Map.addLayer(s2.clip(Upz),vizpsm,"RGB image")
