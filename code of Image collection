@@ -1,1 +1,9 @@
  Here is the link of image collection code-https://code.earthengine.google.com/687c4f8d55e249e2e6e2167b9d5d0a09
+here is the code-
+var filteredimage = ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
+                    .filterBounds(area)
+                    .filterDate("2024-03-01","2024-03-25")
+      print("Image Collection",filteredimage)
+var singleimage = ee.Image("COPERNICUS/S2_SR_HARMONIZED/20240321T042659_20240321T043639_T46QBL")
+var capturetime = ee.Date(singleimage.get("system:time_start"))
+ print("Captured Date",capturetime)  
